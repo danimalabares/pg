@@ -104,7 +104,7 @@ Os colchetes  são locais no sentido de que podemos restringir num aberto.
 \begin{thing6}{Terminologia}\leavevmode
 \begin{itemize}
 \item \(f,g \in C^\infty(M)\) estão em  \textit{\textbf{involução}} se \(\{f,g\}=0\).
-\item Se \(f\) é tal que \(\{f,g\}=0 \forall g \iff X_f=0\), então \(f\) é dita de \textit{\textbf{Casimir}}. No caso simplético isso não faz muito sentido---todas as funções são Casimir porque a forma simplética é não degenerada. Mas no caso geral isso pode mudar.
+\item Se \(f\) é tal que \(\{f,g\}=0 \forall g \iff X_f=0\), então \(f\) é dita de \textit{\textbf{Casimir}}. No caso simplético isso não faz muito sentido---todas as funções são Casimir porque a forma simplética é não degenerada. Mas no caso geral isso pode mudar. (What?) Aula 2: as Casimir são constantes ao longo da foleação dada por \(\pi ^\sharp\).
 \end{itemize}
 \end{thing6}
 
@@ -166,7 +166,7 @@ Considere uma estrutura \(\{\cdot ,\cdot \}\) quase-Poisson em \(M\). Então exi
 O lance é que o colchete quase-Poisson não depende das funções, mas sim das diferenciais delas.
 
 De fato,
-\[\left\{ \substack{\begin{array}{c}\text{colchetes quase-P}  \\ \{\cdot ,\cdot \}\end{array}} \right\} \leftrightsquigarrow \left\{ \substack{\begin{array}{c}\text{bivetores em \(M\)}  \\ \pi \in \Gamma(\Lambda^{2}(TM))\end{array}}\right\} \]
+\[\left\{ \substack{\begin{array}{c}\text{colchetes quase-P}  \\ \{\cdot ,\cdot \}\end{array}} \right\} \leftrightsquigarrow \left\{ \substack{\begin{array}{c}\text{campos de bivetores em \(M\)}  \\ \pi \in \Gamma(\Lambda^{2}(TM))\end{array}}\right\} \]
 Dizemos que \(\pi \in \Gamma(\Lambda^{2}(TM))\) é um \textit{\textbf{bivetor de Poisson}} se \(\{f,g\}=\pi(df,dg)\) satisfaz Jacobi. Em coordenadas locais \((x_1,\ldots,x_n)\), um bivetor \(\pi\) sempre pode ser escrito como
 \begin{align*}
 \pi&=\frac{1}{2}\sum_{i,j}\pi_{i,j}(x) \frac{\partial }{\partial x_i}\wedge \frac{\partial }{\partial x_j}\\
@@ -178,4 +178,161 @@ onde (creo que), em coordenadas locais, \(\pi_{ij}(x)=\{x_i,x_j\}\).
 \begin{remark}\leavevmode
 	A condição de ser Jacobi nas funções \(\pi_{ij}\) é uma EDP muito difícil, tem outras formas de mostrar que algo é Jacobi além de resolvê-la.
 \end{remark}
+
+\section{Aula 2}
+
+\begin{thing6}{Extra}\leavevmode
+Estamos seguindo as notas de H. Burstzyn.
+\end{thing6}
+\[\left\{ \substack{\begin{array}{c}\text{colchetes quase-P}  \\ \{\cdot ,\cdot \}\end{array}} \right\} \leftrightsquigarrow \left\{ \substack{\begin{array}{c}\text{campos de bivetores em \(M\)}  \\ \pi \in \Gamma(\Lambda^{2}(TM))\end{array}}\right\} \leftrightsquigarrow \left\{\substack{\begin{array}{c}\pi^\sharp:T^*M \to TM, \alpha \mapsto  \pi(\alpha,\cdot), \\ \text{t.q.}  (\pi ^\sharp)^*=-\pi ^\sharp \end{array}}\right\}\]
+Além disso, os mapas \(\pi ^\sharp\) são equivalentement pensados como mapas que mandam
+\[df \mapsto  X_f\]
+\[\alpha \mapsto  \pi(\alpha,\cdot)\]
+\begin{exercise}\leavevmode
+Para \((M_1,\pi_1)\), \((M_2,\pi_2)\) de Poisson e \(\varphi:M_1 \to M_2\), são equivalentes
+\begin{itemize}
+\item \(\varphi:M_1\to M_2\) é de Poisson.
+\item \(X_{\varphi^*f}\overset{\varphi}{\sim}X_f\) (os campos hamiltonianos são \(\varphi\)-relacionados)
+\item O seguinte diagrama comuta
+	\[\begin{tikzcd}
+		T_xM_1 \arrow[r, "d_x\varphi"]&  T_{\varphi(x)}M_2\\
+		T_x^*M_1\arrow[u,"\pi_1"]& T_{\varphi(x)}^* M_2\arrow[l,swap,"(d_x\varphi)^*"]\arrow[u,"\pi_2^\sharp"]
+	\end{tikzcd}\]
+\end{itemize}
+\end{exercise}
+
+O ponto de vista tensioral nos da um jeito de definir a estrutura Poisson no produto mais natural
+\begin{thing7}{Terminologia}\leavevmode
+\textit{\textbf{Integrabilidade}} significa que \(\{\cdot,\cdot\}\) é Jacobi.
+\end{thing7}
+
+\subsection{Jacobiador}
+
+Dado um bivetor (sem condição de integrabilidade ainda) \(\pi \in \mathfrak{X}^2(M)\), considere o colchete de Poisson associado,  \(\{f,g\}=\pi(df,dg)\). Definimos
+
+\begin{align*}
+	\operatorname{Jac}_\pi: C^\infty(M)\times C^\infty(M)\times C^\infty(M) &\longrightarrow C^\infty(M) \\
+	\operatorname{Jac}_\pi(f,g,h) &=\{f,\{g,h\}\}+\{h,\{f,g\}\}+\{g,\{h,f\}\}
+\end{align*}
+
+\begin{exercise}\leavevmode
+	\[\operatorname{Jac}(f,g,h)=\mathcal{L}_{[X_f,X_g]}h-\mathcal{L}_{X_{\{f,g\}}}h=(\mathcal{L}_{X_f})(dg,dh)\]
+\textbf{Hint} Use a regra geral para derivada de Lie de tensores.
+\end{exercise}
+
+Vamos ver que consequências temos.
+
+\begin{thing8}{Consequência}\leavevmode
+\(\pi\) é de Poisson \(\iff\)
+\begin{itemize}
+\item 
+	\begin{align*}
+		C^\infty(M) &\longrightarrow \mathfrak{X}^1(X)\\
+		f &\longmapsto X_f
+	\end{align*}
+	é um morfismo de álgebras de Lie, i.e. \(X_{\{f,g\}}=[X_f,X_g]\)
+
+\item \(L_{X_f}\pi=0\).
+
+\item Temos um trivetor que vai ser zero \(\iff\) o colchete é Poisson:
+	\[\exists ! \gamma_\pi \in \mathfrak{X}^3(M)=\Gamma(\Lambda^{3}TM)\]
+	\[\operatorname{Jac}(f,g,h)=\gamma_\pi(df,dg,dh)\]	
+	(para achar \(\gamma\) usamos que o Jacobiador só depende das diferenciais das funções).	
+\end{itemize}
+\end{thing8}
+
+\begin{remark}\leavevmode
+Em coordenadas locais, \(\operatorname{Jac}=0\) \(\iff\) \(\operatorname{Jac}(x_i,x_j,x_k)=0\). I.e. como \(\operatorname{Jac}\) é na verdade um tensor, pordemos pegar coordenadas locais e comprovar que é zero nas funções coordenadas.
+\end{remark}
+
+\begin{example}\leavevmode
+\(U \subset \mathbb{R}^n\) aberto, coordenadas \((x_1,\ldots,x_n\), se um bivetor
+\[\pi= \sum_{i <  j}\pi_{ij}\frac{\partial }{\partial x_i}\wedge \frac{\partial }{\partial x_j}\]
+(lembre que \(\pi_{ij}=\{x_i,x_j\}\)) é tal que \(\pi_{ij}\) são constantes, automáticamente \(\pi\) é de Poisson, porque \(\{x_k,\{x_i,x_j\}\}=0\) já que é uma derivacão.
+\end{example}
+
+\begin{example}[O colchete de Poisson é de Poisson]\leavevmode
+Porque
+\[\pi_{\operatorname{can}}=\sum_{i=1}^n \frac{\partial }{\partial p_i}\wedge \frac{\partial }{\partial q_i}\]
+tem \(\pi_{ij}\) constantes.
+\end{example}
+
+\begin{example}[Toda superfície é de Poisson]\leavevmode
+Porque todo trivetor é zero.
+\end{example}
+
+\begin{example}[Colchetes de Poisson em \(\mathbb{R}^2\) são funções]\leavevmode
+Vamos falar mais disso depois. O Arnold tava estudando singularidades de funções desse jeito.
+\end{example}
+
+\begin{example}[\(\mathbb{R}^3\)]\leavevmode
+Pensemos que \(\mathbb{R}^3=\{\xi=(x,y,z)\}\) e definamos
+\[\{f,g\}(\xi):= \left<\xi,\nabla f|_{\xi}\times \nabla |_{\xi}\right>\]
+{\color{2}Você está convidado a ver que}
+\[\pi=z \frac{\partial }{\partial x}\wedge\frac{\partial }{\partial y}+x \frac{\partial }{\partial y}+ y \frac{\partial }{\partial z}\wedge\frac{\partial }{\partial x}\]
+\end{example}
+
+\begin{thing7}{Propriedade geral}\leavevmode
+O colchete de Poisson sempre desce para o quociente (quando temos uma ação de um grupo de Lie).
+
+Um exemplo disso é o espaço cotangente de um grupo de Lie, \(T^* G\), onde aparece \(\mathfrak{g}^*\). Sim, porque o fibrado (co)tangente de um grupo de Lie é trivial, então \(T^*G \cong G\times \mathfrak{g}^*\).
+\end{thing7}
+
+\subsection{Não temos derivada exterior mas…}
+Lembre: \(\mathfrak{X}^k(M)\overset{\operatorname{def}}{=}\Gamma(\Lambda^{k}TM)\). Já temos uma coisa graduada:
+\[\mathfrak{X}^\bullet(M)\overset{\operatorname{def}}{=}\bigoplus_{k=0}^{\dim M}\mathfrak{X}^k(M)\]
+onde definimos \(\mathfrak{X}^0(M):= C^\infty(M)\).
+
+\begin{defn}[Colchete de Shouten-Nijenhuis]\leavevmode
+	\[[\cdot,\cdot]:\mathfrak{X}^k(M) \times \mathfrak{X}^\ell(M) \longrightarrow \mathfrak{X}^{k+ \ell-1}(M)\]
+satisfazendo
+\begin{itemize}
+\item \(\mathbb{R}\)-bilinear
+\item \([X,Y]=-(-1)^{(k-1)(\ell-1)}[Y,X]\)
+\item \([X,Y \wedge Z]=[X,Y]\wedge Z + (-1)^{(k-1)\ell}Y \wedge[X,Z]\)
+\item (Nos campos vetoriais é o colchete de Lie.) \(Z \in \mathfrak{X}^1(M)\), \(\implies\) \([Z,X]=\mathcal{L}_ZX\).
+\end{itemize}
+\end{defn}
+
+\begin{thm}\leavevmode
+Existe um único colchete com essas propriedades. Além disso,
+\[(-1)^{(k-1)(m-1)}[X,[Y,Z]+(-1)^{(m-1)(\ell-1)}[Z,[X,Y]]+(-1)^{(\ell-1)(k-1)}[Y,[Z,X]]=0\]
+onde \(|X|=k\), \(|Y|=\ell\) e \(|Z|=m\).
+\end{thm}
+
+Isso significa que \((\mathfrak{X}^\bullet,[\cdot,\cdot])\) é uma \textit{\textbf{álgebra de Poisson graduada}} (com grau \(-1\)). O Gerstenhaber faz uma teoria de deforma ção de lagneras de Lie onde aparem esses objetos.
+
+\begin{thing6}{Lance}[Extra]\leavevmode
+	Pode ver \([\pi,\cdot]\) como uma derivação \(\mathfrak{X}^\bullet \to \mathfrak{X}^{\bullet+1}\) quando \(\pi\) é um bivetor.
+\end{thing6}
+
+Bom, queremos usar esse colchete para estudar as estruturas de Poisson de um jeito mais intrínseco.
+
+\begin{exercise}\leavevmode
+	Pegue um bivetor \(\pi \in \mathfrak{X}^2(M)\).
+	\begin{itemize}
+		\item \([\pi,f]=-X_f\) \(\forall  f\in C^\infty(M)\).
+		\item (Todo mundo teria a capacidade de fazer essa conta.) Vale:
+			\begin{align*}
+				\frac{1}{2}[\pi,\pi]&=\gamma_\pi \qquad \text{(o Jacobiador)} 
+			\end{align*}
+			Não é obvio mas a equação \([\pi,\pi]=0\) é extremamante não trivial porque temos uma loucura de sinais. Mas o ponto é que se  \([\pi,\pi]=0\).
+	\end{itemize}
+\end{exercise}
+
+\begin{remark}\leavevmode
+Temos uma analogia para estruturas complexas, usando o colchete de Neihujaus, que é um colchete que mora em \(\Omega^{\bullet}(M,TM)\) (\(TM\)-valued differential forms). Então quando ele se anula a estrutura quase-complexa vira complexa…
+\end{remark}
+
+\begin{remark}\leavevmode
+\((x_1,\ldots,x_m)\) coordanadas, \(\xi_i:= \frac{\partial }{\partial x_i}\), \(X \in \mathfrak{X}^k(M)\), \(Y \in \mathfrak{X}^\ell(M)\).
+\[X= \sum_{i_1<\ldots<i_k}a_{i_1\ldots i_k}(x)\xi_{i_1}\ldots\xi_{i_k}Y=\sum_{i_1<\ldots<i_k}b_{i_1\ldots i_k}(x)\xi_{i_1}\ldots\xi_{i_k}\]
+pensando que isso daqui é só notação…
+\[[X,Y]=\sum_{i}\frac{\partial X}{\partial \xi_i}\frac{\partial Y}{\partial x_i}-(-1)^{(k-1)(\ell-1)}\frac{\partial X}{\partial x_i}\frac{\partial Y}{\partial \xi_i}\]
+que te lembra do colchete de Poisson original.
+
+\end{remark}
+
+
+
 \end{document}
