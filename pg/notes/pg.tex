@@ -1,0 +1,181 @@
+\input{/Users/daniel/github/config/preamble-por.sty}%available at github.com/danimalabares/config
+%\input{/Users/daniel/github/config/thms-por.sty}%available at github.com/danimalabares/config
+
+\newcommand{\rightlooparrow}{\mathbin{
+    \vbox{\openup-10.25pt\halign{\hss$##$\hss\cr\circ\cr\longrightarrow\cr}}
+}}
+
+\begin{document}
+\bibliographystyle{alpha}
+
+\begin{minipage}{\textwidth}
+	\begin{minipage}{1\textwidth}
+		\hfill Daniel González Casanova Azuela
+		
+		{\small Prof. Henrique Bursztyn\hfill\href{https://github.com/danimalabares/sg}{github.com/danimalabares/sg}}
+	\end{minipage}
+\end{minipage}\vspace{.2cm}\hrule
+
+\vspace{10pt}
+{\huge Geometria de Poisson}
+\tableofcontents
+\section{Aula 1}
+
+Livros:
+\begin{itemize}
+\item Lectures em PG, Carnic-Gernandes-Marcit
+\item A brief introduction to PG, HB
+\end{itemize}
+
+\subsection{História}
+
+Em 1809, Poisson buscava uma formulação geométrica da mecânica clássica (celeste). Espaço fase, função Hamiltoniana, campo Hamiltoniano, equações de Hamilton. O primeiro colchete de Poisson é
+\begin{align*}
+	\{\cdot ,\cdot \}: C^\infty(\mathbb{R}^{2n})\times C^\infty(\mathbb{R}^{2n}) &\longrightarrow C^\infty(\mathbb{R}^{2n}) \\
+	\{f,g\} &=\sum_{i=1}^n \frac{\partial f}{\partial p_i}\frac{\partial g}{\partial q_i}-\frac{\partial f}{\partial q_i}\frac{\partial g}{\partial p_i}
+\end{align*}
+
+Interpretação dinâmica: \(\{H,f\}=\mathcal{L}_{X_H}f\), que como temos antisimetria, é o mesmo que \(-\mathcal{L}_{X_f}H\).
+
+Conhecer a dinâmica do sistema é resolver às equações de Hamilton, EDOs. Integrais primeiras. Aí nasce a área de \textit{sistemas completamente integraveis}.
+
+\begin{thm}[de Poisson, 1809]\leavevmode
+O colchete de Poisson de duas integrais primeiras é uma integral primeira, i.e.
+\[\{H,f\}=0,\{H,g\}=0 \implies \left\{ \{f,g\},H \right\} =0\]
+\end{thm}
+
+Mas foi o Jacobi que descobreu o meolho daquele teorema:
+\begin{thm}[Jacobi, 1842]\leavevmode
+\[\{h,\{f,g\}\} +\{g,\{h,f\}\} +\{f,\{g,h\}\} =0\]
+\end{thm}
+De fato, o teorema de Poisson segue do teorema de Jacobi.
+
+Em 1880 S. Lie trabalha em \textit{álgebras de Lie}. Ele mostra que toda álgebra de Lie vem de um grupo de Lie localmente. Isso levou à \textit{teoria de Lie} onde foram definidas as estruturas de Poisson.
+
+Em 1970, Kirillov, Sourieau e Kostant voltam a trabalhar no colchete de Poisson. Dois artigos que marcaram a era moderna da geometria de Poisson são Lichnerowicz (?) e Weinstein (1983).
+
+\subsection{Motivação para a geometria de Poisson}
+
+\begin{itemize}
+\item Mecânica geometrica (plasmas)/Teoria de campos.
+\item Sistemas integráveis \(\to\) sistemas bihamiltonianos Poisson-Nijenhuis (algum scenário onde temos duas estruturas de Poisson compatíveis…).
+\item Teoria de representações/grupos quânticos (Drinfeld, Fadeev)\(\rightsquigarrow \) grupos de Lie/Poisson.
+\item Quantização por deformação. Passagem do formalismo clássico com o colchete de Poisson, para um formalismo com uma álgebra não comutativa \(\mathbb{A},*\).
+\end{itemize}
+
+\subsection{Definições}
+
+\begin{defn}\leavevmode
+\(M\) variedade diferenciável. Um \textit{\textbf{colchete de Poisson}} em \(M\) é uma operação \(\mathbb{R}\)-bilinear
+\begin{align*}
+	\{\cdot ,\cdot \}: C^\infty(M)\times C^\infty(M) &\longrightarrow C^\infty(M)
+\end{align*}
+tal que
+\begin{enumerate}
+\item (Antisimetria.) \(\{f,g\}=-\{g,f\}\).
+\item (Jacobi.) \(\{h,\{f,g\}\} +\{g,\{h,f\}\} +\{f,\{g,h\}\} =0\).
+ \item (Leibniz.) \(\{f,gh\}=\{f,g\}h+\{f,h\}g\).
+\end{enumerate}
+\end{defn}
+\begin{remark}\leavevmode
+As condicões (1) e (2) dizem que  \((C^\infty(M),\{\})\) é uma álgebra de Lie. Como ainda é uma álgebra comutativa com o produto usual, a condição (3) diz como é que interagem esses dois produtos.
+\end{remark}
+\begin{remark}\leavevmode
+Para qualquer álgebra comutativa \(\mathcal{A}\) podemos introduzir um colchete de Lie e pedir a condição Leibniz, e isso se chama de \textit{\textbf{álgebra de Poisson}}. E se o colchete satisfaz (1) e (3), se chama de \textit{\textbf{estrutura quase Poisson}}, que já tem um significado geométrico.
+\end{remark}
+\begin{defn}\leavevmode
+\textit{\textbf{Aplicação (ou morfismo) de Poisson}} entre \((M_1,\{\cdot ,\cdot \}_1)\) e \((M_2,\{ \cdot ,\cdot \}_2)\) é \(\varphi:M_1 \to M_2\) que preserva colchetes, i.e. o pullback
+\begin{align*}
+	\varphi^*: C^\infty(M_2) &\longrightarrow C^\infty(M_1) \\
+	f &\longmapsto f \circ \varphi
+\end{align*}
+preserva colchete no sentido de que
+\[\{f,g\}_2 \circ \varphi=\{f \circ \varphi,g \circ \varphi\}_1.\]
+\end{defn}
+Temos um campo que chamamos de \textit{\textbf{hamiltoniano}} que podemos tirar da condição leibniz do colchete. Isso é porque \(\{f,\cdot \}:C^\infty(M) \to C^\infty(M)\) é uma derivação! Definindo esse campo como \(X_f\) obtemos
+\[\{f,g\}=\mathcal{L}_{X_f}f=dg(X_f)=-df(X_g)\]
+
+\begin{remark}\leavevmode
+Os colchetes  são locais no sentido de que podemos restringir num aberto.
+\end{remark}
+\begin{remark}\leavevmode
+\(\{f,f\}=0\) (\(f\) é preservada por seu campo hamiltoniano).
+\end{remark}
+\begin{thing6}{Terminologia}\leavevmode
+\begin{itemize}
+\item \(f,g \in C^\infty(M)\) estão em  \textit{\textbf{involução}} se \(\{f,g\}=0\).
+\item Se \(f\) é tal que \(\{f,g\}=0 \forall g \iff X_f=0\), então \(f\) é dita de \textit{\textbf{Casimir}}. No caso simplético isso não faz muito sentido---todas as funções são Casimir porque a forma simplética é não degenerada. Mas no caso geral isso pode mudar.
+\end{itemize}
+\end{thing6}
+
+\begin{example}\leavevmode
+\begin{itemize}
+\item \((M,\{\cdot ,\cdot \}\equiv0)\).
+
+	Outro de jeito de definir funções \(f_1,\ldots,f_k\) com \(\{f_i,f_j\}=0\) é simplesmente dizer \((M,\{\cdot ,\cdot \})\xrightarrow{F}(\mathbb{R}^k,\{\cdot ,\cdot \} \equiv 0)\) é uma aplicação de Poisson.
+\item \(\mathbb{R}^{2n}=\{(q,p)\}\), o colchete de Poisson de Poisson é um colchete de Poisson.
+\item Mais geralmente, toda vez que tenha uma variedade simmplética \((M,\omega)\), então temos o campo hamiltoniano, e podemos definir como você já sabe \(\{f,g\}:=\omega(X_g,X_f)=dg(X_f)=-df(X_g)\). É isso é um colchete de Poisson, para vê-lo vai notar que Jacobi é equivalente a \(d\omega=0\).
+
+	Qualquer colchete de Poisson que vem de uma estrutura simplética pode ser escrito como o colchete de Poisson de Poisson em coordenadas locais pelo teorema de Darboux.
+
+\item  Considere o produto de \((M_1,\{\cdot ,\cdot \}_1)\) e \((M_2,\{ \cdot ,\cdot \}_2)\) é \(\varphi:M_1 \to M_2\), \(M_1 \times M_2\). Então
+	\[\{f,g\}(x_1,x_2)=\{f(\cdot ,x_2),g(\cdot ,x_2)\}_1(x_1)+\{f(x_1,\cdot ),g(x_1,\cdot )\}_2(x_2).\]
+	{\color{2}Exercício!} Mostre que esse é um colchete de Poisson. Ainda, que as projeções são mapas de Poisson e os pullbacks de funções em cada \(M_i\) Poisson-comutam no produto, i.e.
+	\[\{p_1^*C^\infty(M_1),p_2^*C^\infty(M_2)\}=0\]
+	\[\begin{tikzcd}
+	&M_1 \times M_2\arrow[dl,"p_1",swap]\arrow[dr,"p_2"]\\
+	M_1&&M_2
+	\end{tikzcd}\]
+\end{itemize}
+\begin{proof}[Solution]\leavevmode
+A antisimetria é imediata desde que \(\{\cdot ,\cdot \}_1\) e \({\cdot,\cdot}_2\) são antisimétricos. A condição de Jacobi não é imediata para mim:
+\begin{align*}
+	\{f,\{g,h,\}\}(x_1,x_2)+\{g,\{h,f\}\}(x_1,x_2)+\{h,\{f,g\}\}(x_1,x_2)&=?
+\end{align*}
+Bom calculemos
+\begin{align*}
+\{f,\{g,h\}\}(x_1,x_2)&=\{f(\cdot,x_2),\{g,h\}(\cdot,x_2)\}_1(x_1)+\{f(x_1,\cdot),\{g,h\}(x_1,\cdot)\}_2(x_2)\\
+\{g,\{h,f\}\}(x_1,x_2)&=\{g(\cdot,x_2),\{h,f\}(\cdot,x_2)\}_1(x_1)+\{g(x_1,\cdot),\{h,f\}(x_1,\cdot)\}_2(x_2)\\
+\{h,\{f,g\}\}(x_1,x_2)&=\{h(\cdot,x_2),\{f,g\}(\cdot,x_2)\}_1(x_1)+\{h(x_1,\cdot),\{f,g\}(x_1,\cdot)\}_2(x_2)
+\end{align*}
+lo que yo digo es que puedo usar Jacobi en \(\{,\}_1\) si veo que \(\{g,h\}(\cdot,x_2)\) es igual a \(\{g(\cdot,x_2),h(\cdot,x_2)\}_1\). Entonces calculo
+\begin{align*}
+\{g,h\}(\circ,x_2)&\overset{\operatorname{def}}{=}\{g(\cdot,x_2),h(\cdot,x_2)\}_1(\circ)+\{g(\circ,\cdot),h(\circ,\cdot)\}_2(x_2){\color{2}\ldots}
+\end{align*}
+Por otro lado, creo que Leibniz sí jala:
+\begin{align*}
+\{f,gh\}(x_1,x_2)&=\{f(\cdot,x_2),gh(\cdot,x_2)\}_1(x_1)+\text{otro lado}
+\end{align*}
+mientras que
+\begin{align*}
+\Big(\{f,g\}h\Big)(x_1,x_2)&=\{f(\cdot,x_2),g(\cdot,x_2)\}_1(x_1)h(x_1,x_2)\ldots
+\end{align*}
+Em fim, ver que as projeções são mapas de Poisson significa que \(p_1^*\{\cdot,\cdot\}\)
+\end{proof}
+\item \(S\) variedade, considere uma família suave de estruturas simpléticas, i.e. \(\omega_t \in \Omega^2(S)\) simpléticas. Considere as estruturas de Poisson associadas a cada uma delas, i.e. \(\{\cdot ,\cdot \}_t\). Então pode produzir um colchete em \(M:=S \times \mathbb{R}\) dado por
+	\[\{f,g\}(x,t):=\{f(\cdot ,t),g(\cdot ,t)\}_t(x).\]
+	Creo que es sólo pegar la estructura de Poisson para cada \(t\).
+\end{example}
+
+\subsection{Ponto de vista tensorial}
+
+Para isso precisamos de \textit{\textbf{multivetores}}, que é o análogo das formas diferenciais para campos vetoriais, i.e. seções do fibrado \(\Lambda^{\bullet}(TM)\). I.e., \(\mathfrak{X}^\bullet(M)=\Gamma(\Lambda^{\bullet}(TM))\).
+
+Considere uma estrutura \(\{\cdot ,\cdot \}\) quase-Poisson em \(M\). Então existe um único bivetor \(\pi \in \Gamma(\Lambda^{2}(TM))\) tal que
+\[\{f,g\}=\pi(df,dg)\]
+O lance é que o colchete quase-Poisson não depende das funções, mas sim das diferenciais delas.
+
+De fato,
+\[\left\{ \substack{\begin{array}{c}\text{colchetes quase-P}  \\ \{\cdot ,\cdot \}\end{array}} \right\} \leftrightsquigarrow \left\{ \substack{\begin{array}{c}\text{bivetores em \(M\)}  \\ \pi \in \Gamma(\Lambda^{2}(TM))\end{array}}\right\} \]
+Dizemos que \(\pi \in \Gamma(\Lambda^{2}(TM))\) é um \textit{\textbf{bivetor de Poisson}} se \(\{f,g\}=\pi(df,dg)\) satisfaz Jacobi. Em coordenadas locais \((x_1,\ldots,x_n)\), um bivetor \(\pi\) sempre pode ser escrito como
+\begin{align*}
+\pi&=\frac{1}{2}\sum_{i,j}\pi_{i,j}(x) \frac{\partial }{\partial x_i}\wedge \frac{\partial }{\partial x_j}\\
+&=\sum_{i<j}\pi_{ij}(x)\frac{\partial }{\partial x_i}\wedge\frac{\partial }{\partial x_j}
+\end{align*}
+de modo que qualquer colchete quase-Poisson, localmente se escreve desse jeito:
+\[\{f,g\}(x)=\sum_{i,j}\pi_{ij}(x)\frac{\partial f}{\partial x_i}\frac{\partial g}{\partial x_j}\]
+onde (creo que), em coordenadas locais, \(\pi_{ij}(x)=\{x_i,x_j\}\).
+\begin{remark}\leavevmode
+	A condição de ser Jacobi nas funções \(\pi_{ij}\) é uma EDP muito difícil, tem outras formas de mostrar que algo é Jacobi além de resolvê-la.
+\end{remark}
+\end{document}
