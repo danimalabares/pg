@@ -1,0 +1,82 @@
+\input{/Users/daniel/github/config/preamble-por.sty}%available at github.com/danimalabares/config
+%\input{/Users/daniel/github/config/thms-por.sty}%available at github.com/danimalabares/config
+
+\newcommand{\rightlooparrow}{\mathbin{
+    \vbox{\openup-10.25pt\halign{\hss$##$\hss\cr\circ\cr\longrightarrow\cr}}
+}}
+
+\begin{document}
+\bibliographystyle{alpha}
+
+\begin{minipage}{\textwidth}
+	\begin{minipage}{1\textwidth}
+		\hfill Daniel González Casanova Azuela
+		
+		{\small Prof. Mikhail Belolipetsky\hfill\href{https://github.com/danimalabares/ca}{github.com/danimalabares/ca}}
+	\end{minipage}
+\end{minipage}\vspace{.2cm}\hrule
+
+\vspace{10pt}
+{\huge Análise Complexa}
+\tableofcontents
+\section{Aula 1}
+
+\subsection{1. Funções holomorfas}
+
+\subsubsection{1.1 Limite e continuidade}
+
+Seja \(f:A \subset \mathbb{C} \to \mathbb{C}\) com \(A \subset \mathbb{C}\) aberto.
+
+\begin{thing4}{Definição 1}[Límite]\label{def:1}\leavevmode
+	Seja \(z_0 \in A\). \(L:=\lim_{z \to z_0} f(z)\) se \(\forall  \varepsilon>0\) \(\exists \delta=\delta(\varepsilon,z_0)>0\) tal que \(z \in A\), \(0 <|z-z_0|<\delta\), \(\implies\) \(|f(z)-L|<\varepsilon\).
+\end{thing4}
+\begin{thing5}{Observação 1}\label{rk:1}\leavevmode
+ Podemos assumir \(z_0\) ou \(L\) como sendo \(\infty\).
+\end{thing5}
+\begin{thing5}{Observação 2}\label{rk:2}\leavevmode
+``Usando propriedades básicas de números complexos, i.e. que \(|ab|=|a||b|\) e que \(|a+b|\leq |a|+|b|\), a nossa definição de limite permite calcular limite da soma, produto e quociente."
+\end{thing5}
+
+\begin{thing5}{Observação 3}\label{rk:3}\leavevmode
+	Pode verificar usando a definição que \(L=\lim_{z \to z_0} f(z)\) \(\iff\) \(\overline{L}=\lim_{z \to z_0} \overline{f(z_0)}\). Então \[\lim_{z \to z_0} \operatorname{Re}f(z)=\operatorname{Re}L\qquad  \text{e} \qquad \lim_{z \to z_0} \operatorname{Im}f(z)=\operatorname{Im}L\]
+\end{thing5}
+
+\begin{thing4}{Definição 2}\label{def:2}\leavevmode
+A função \(f(z)\) é \textit{\textbf{contínua}} em \(z_0 \in A\) se \(\lim_{z \to z_0} f(z)= f(z_0)\). A função \(f(z)\) é \textit{\textbf{contínua em \(A\)}} se ela é contínua em cada ponto de \(A\).
+\end{thing4}
+
+\begin{thing5}{Observação}\label{rk:}\leavevmode
+\(f,g\) continuas \(\implies\)\(f+g\), \(fg\) contínuas e se \(g(z_0) \neq 0\), \(f/g\) contínua. \(f\) contínua, \(\implies\) \(\operatorname{Re}f(z),\operatorname{Im}f(z)\) contínuas.
+\end{thing5}
+
+\subsubsection{1.2 A derivada complexa}
+
+\begin{defn}\leavevmode
+Sejam \(A \subset\mathbb{C}\) aberto, \(z_0 \in A\) e \(f:A \to \mathbb{C}\). Dizemos que \(f\) é \textit{\textbf{diferenciável}} em \(z_0\) se existe o limite
+\[\lim_{z \to z_0} \frac{f(z)-f(z_0)}{z-z_0}=f'(z_0)\]
+\end{defn}
+
+\begin{example}\leavevmode
+Seja \(f(z) \in \mathbb{R}\), \(z \in A \subset \mathbb{C}\) e \(a \in A\).
+\begin{itemize}
+\item \(f'(a) = \lim_{ h \to 0} \frac{f(a+h)-f(a)}{g} \in \mathbb{R}\).
+\item \(f'(a)=\lim_{h \to 0} \frac{f(a+ih)-f(a)}{ih}\) é imaginário.
+Então, \(f'(a)=0\), i.e. \(f=\) cte.
+\end{itemize}
+\end{example}
+
+\begin{thing7}{Definição principal}\leavevmode
+Sejam \(A \subset \mathbb{C}\) aberto, \(f:A \to \mathbb{C}\), \(z_0 \in A\). Vamos dizer que \(f\) é \textit{\textbf{holomorfa}} (ou \textit{\textbf{analítica}}) em \(z_0\) se ela é diferenciável em uma vizinhança de \(z_0\). A função \(f\) é \textit{\textbf{holomorfa em \(A\)}} se \(f\) é diferenciável em todo ponto de \(A\).
+\end{thing7}
+
+\begin{remark}\leavevmode
+Historicamente se usou primeiro o termo \textit{analítica}, mas agora é mais comum usar \textit{holomorfa}.
+\end{remark}
+
+\begin{example}\leavevmode
+\(f(z)=|z|\) é diferenciável em \(z=0\) mas não é diferenciável em qualquer vizinhança de 0. (Então não é analítica.)
+\end{example}
+
+Seja \(f:A \to \mathbb{C}\) diferenciável em \(z \in A\).
+
+\end{document}
